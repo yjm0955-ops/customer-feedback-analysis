@@ -57,6 +57,8 @@ if use_sample_data:
         st.sidebar.success("샘플 데이터 로드 성공!")
         st.sidebar.write("데이터 미리보기:")
         st.sidebar.dataframe(df.head())
+        st.sidebar.info(f"로드된 데이터 크기: {df.shape}")
+        st.sidebar.info(f"로드된 데이터 컬럼: {list(df.columns)}")
     except FileNotFoundError:
         st.sidebar.error("'feedback-data.csv' 파일을 찾을 수 없습니다. 샘플 데이터를 먼저 생성해주세요.")
         st.stop()
@@ -74,15 +76,19 @@ else:
             st.sidebar.success("파일 업로드 성공!")
             st.sidebar.write("데이터 미리보기:")
             st.sidebar.dataframe(df.head())
+            st.sidebar.info(f"업로드된 데이터 크기: {df.shape}")
+            st.sidebar.info(f"업로드된 데이터 컬럼: {list(df.columns)}")
         except Exception as e:
             st.sidebar.error(f"파일 처리 중 오류가 발생했습니다: {e}")
             st.sidebar.warning("파일 형식이나 내용이 올바른지 확인해주세요.")
 
 
 if df is not None:
+    st.info("데이터프레임이 성공적으로 로드되었습니다. 분석을 시작합니다.")
     # Select text column
     text_column = st.sidebar.selectbox("피드백 텍스트 컬럼 선택", df.columns)
     if text_column:
+        st.info(f"선택된 텍스트 컬럼: {text_column}")
         st.subheader("데이터 분석 시작")
         st.write(f"선택된 텍스트 컬럼: **{text_column}**")
 
