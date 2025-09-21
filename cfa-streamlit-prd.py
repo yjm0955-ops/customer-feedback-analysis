@@ -18,8 +18,8 @@ sentiment_lexicon = {
 }
 
 # For Korean font in matplotlib
-font_path = 'C:/Windows/Fonts/malgun.ttf' # Windows
-# font_path = '/usr/share/fonts/truetype/nanum/NanumGothic.ttf' # Linux (adjust as needed)
+font_path = '/usr/share/fonts/truetype/nanum/NanumGothic.ttf' # Linux (adjust as needed)
+# font_path = 'C:/Windows/Fonts/malgun.ttf' # Windows
 
 try:
     # Clear font cache to ensure new font is loaded
@@ -30,9 +30,9 @@ try:
         fm.fontManager.addfont(font_path)
     
     # Set the font family to the known font name
-    plt.rcParams['font.family'] = 'Malgun Gothic' # Use the exact font name
+    plt.rcParams['font.family'] = 'NanumGothic' # Use the exact font name
     plt.rcParams['axes.unicode_minus'] = False # minus sign
-    st.success(f"'Malgun Gothic' 폰트가 성공적으로 설정되었습니다.")
+    st.success(f"'NanumGothic' 폰트가 성공적으로 설정되었습니다.")
 except FileNotFoundError:
     st.error(f"'{font_path}' 폰트 파일을 찾을 수 없습니다. 그래프에 한글이 깨져 보일 수 있습니다. 경로를 확인하거나 다른 한글 폰트를 설정해주세요.")
     st.stop() # Stop the app if font file is not found
